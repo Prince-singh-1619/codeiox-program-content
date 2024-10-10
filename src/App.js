@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
+import Home from './screens/Home/Home';
+// import VideoPage from './components/VideoPage/VideoPage';
+import Learn from './screens/Learn/Learn';
+import Dashboard from './screens/Dashboard/Dashboard';
+import Syllabus from './components/Syllabus/Syllabus';
 
-function App() {
+
+const AppRoutes = () => {
+  const routes = useRoutes([
+    { path: '/', element: <Home /> },
+    { path:'/learn', element: <Learn/>},
+    { path: '/syllabus', element: <Syllabus/> },
+    { path:'/dashboard', element: <Dashboard/>}
+  ]);
+
+  return routes;
+};
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
-}
+};
 
 export default App;
